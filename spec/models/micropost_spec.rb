@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(zagolovok: "Lorem ipsum", content: "Lorem ipsum") }
 
   subject { @micropost }
-
+  it { should respond_to(:zagolovok) }
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
@@ -28,7 +28,7 @@ describe Micropost do
   end
 
   describe "with blank content" do
-    before { @micropost.content = " " }
+    before { @micropost.content = " " && @micropost.zagolovok = " "}
     it { should_not be_valid }
   end
 end

@@ -5,9 +5,6 @@ describe "Micropost pages" do
   subject { page }
   describe "post" do
 
-    it { should have_selector('title', text: 'All Post') }
-    it { should have_selector('h1',    text: 'All Post') }
-
     it "should list each micropost" do
       Micropost.all.each do |micropost|
         page.should have_selector('li', text: micropost.zagolovok)
@@ -28,7 +25,6 @@ describe "Micropost pages" do
 
       describe "error messages" do
         before { click_button "Post" }
-        it { should have_zagolovok('error') }
         it { should have_content('error') }
       end
     end
