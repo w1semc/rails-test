@@ -204,6 +204,11 @@ input {
     border-top: 1px solid #e8e8e8;
   }
 }
+.zagolovok {
+  font-size: 3em;
+  text-align: center;
+  display: block;
+}
 .content {
   display: block;
 }
