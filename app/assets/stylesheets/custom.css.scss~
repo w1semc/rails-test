@@ -205,7 +205,7 @@ input {
   }
 }
 .zagolovok {
-  font-size: 3em;
+  font-size: 30px;
   text-align: center;
   display: block;
 }

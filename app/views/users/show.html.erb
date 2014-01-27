@@ -7,11 +7,12 @@
         <%= @user.name %>
       </h1>
     </section>
-
+    <%= link_to "Create post", postcreate_path,
+                                class: "btn btn-large btn-primary" %>
   </aside>
   <div class="span8">
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3>Posts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

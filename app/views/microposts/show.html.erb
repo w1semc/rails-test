@@ -1,0 +1,10 @@
+<% provide(:title, @micropost.zagolovok) %>
+
+<h1 class="zagolovok"><%= @micropost.zagolovok %></h1>
+<span class="content"><%= @micropost.content %></span><br>
+<span class="users">
+             Author: <%= link_to @micropost.user.name, @micropost.user %>
+</span><br>
+<span class="timestamp"> Posted <%= @micropost.created_at %> </span>
+</div>
+</div>

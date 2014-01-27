@@ -3,14 +3,17 @@
     <aside class="span4">
       <section>
         <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
+     
+        <%= link_to "Create post", postcreate_path,
+                                class: "btn btn-large btn-primary" %>
       </section>
     </aside>
     <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
+      <h3>Post Feed</h3>
+      <ul>
+      <%= render @micropost %>
+      </ul>
+      <%= will_paginate @micropost %>
     </div>
   </div>
 <% else %>
