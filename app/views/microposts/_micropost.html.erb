@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <li>
   <span class="zagolovok">Title: <%= micropost.zagolovok %></span>
   <p><span class="content"><%= micropost.content %></span></p>
@@ -6,3 +7,20 @@
             Posted <%= micropost.created_at %> </span> </p>
   
 </li>
+=======
+<h5 class="zagolovok">
+  Title: <%= link_to micropost.zagolovok, micropost %>
+</h5>
+  <span class="content"><%= micropost.content %></span>
+  <h5>
+    Author: <%= link_to micropost.user.name, micropost.user %>
+  </h5>
+  <span class="timestamp">
+    Posted <%= micropost.created_at %>.
+  </span></br>
+  <% if current_user?(micropost.user) %>
+    <%= link_to "delete", micropost, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: micropost.content %>
+  <% end %>
+>>>>>>> post
