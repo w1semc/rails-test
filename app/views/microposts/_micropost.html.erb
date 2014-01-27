@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<li>
-  <span class="zagolovok">Title: <%= micropost.zagolovok %></span>
-  <p><span class="content"><%= micropost.content %></span></p>
-  <span class="user"> Author <%= link_to micropost.user.name %></span>
-  <p> <span class="timestamp">
-            Posted <%= micropost.created_at %> </span> </p>
-  
-</li>
-=======
 <h5 class="zagolovok">
   Title: <%= link_to micropost.zagolovok, micropost %>
 </h5>
@@ -23,4 +13,4 @@
                                      data: { confirm: "You sure?" },
                                      title: micropost.content %>
   <% end %>
->>>>>>> post
+
