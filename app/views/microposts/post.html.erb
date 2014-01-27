@@ -3,11 +3,17 @@
 <ul>
   <% @micropost.each do |micropost| %>
     <li>
-      <span class="zagolovok"><%= link_to micropost.zagolovok %></span>
+      <span class="zagolovok">Title: <%= link_to micropost.zagolovok, 
+                                         posts_path(micropost[:id]) %></span>
       <p><span class="content"><%= micropost.content %></span></p>
       <span class="user"> Author <%= link_to micropost.user.name %></span>
       <p> <span class="timestamp">
            Posted <%= micropost.created_at %> </span> </p>
+      <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete,
+                                                data: { confirm: "You sure?" },
+                                                title: micropost.content %>
+      <% end %>
     </li>
   <% end %>
 </ul>

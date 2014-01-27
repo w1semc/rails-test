@@ -1,9 +1,10 @@
 <li id="<%= feed_item.id %>">
-  <span class="zagolovok"><%= feed_item.zagolovok %></span>
+  <span class="zagolovok">Title: <%= feed_item.zagolovok %></span>
   <p><span class="content"><%= feed_item.content %></span></p>
   <span class="user"> Author
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
   <p> <span class="timestamp">
             Posted <%= feed_item.created_at %>.</p>
+
 </li>

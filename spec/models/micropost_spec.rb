@@ -1,9 +1,22 @@
+# == Schema Information
+#
+# Table name: microposts
+#
+#  id         :integer          not null, primary key
+#  content    :string(255)
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  zagolovok  :string(255)
+#
+
 require 'spec_helper'
 
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(zagolovok: "Lorem ipsum", content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(zagolovok: "Lorem ipsum", 
+                                              content:   "Lorem ipsum") }
 
   subject { @micropost }
   it { should respond_to(:zagolovok) }
@@ -29,6 +42,10 @@ describe Micropost do
 
   describe "with blank content" do
     before { @micropost.content = " " && @micropost.zagolovok = " "}
+    it { should_not be_valid }
+  end
+  describe "when title is too long" do
+    before { @micropost.zagolovok = "a" * 141 }
     it { should_not be_valid }
   end
 end

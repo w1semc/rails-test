@@ -1,7 +1,8 @@
 <li>
-  <span class="zagolovok"><%= micropost.zagolovok %></span>
+  <span class="zagolovok">Title: <%= micropost.zagolovok %></span>
   <p><span class="content"><%= micropost.content %></span></p>
   <span class="user"> Author <%= link_to micropost.user.name %></span>
   <p> <span class="timestamp">
             Posted <%= micropost.created_at %> </span> </p>
+  
 </li>
