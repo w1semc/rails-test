@@ -11,7 +11,9 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :zagolovok
+  attr_accessible :content, :zagolovok, :tag_list
+  acts_as_taggable
+
   belongs_to :user
 
   validates :user_id,   presence: true

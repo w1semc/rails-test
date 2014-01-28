@@ -1,16 +1,18 @@
 <h5 class="zagolovok">
   Title: <%= link_to micropost.zagolovok, micropost %>
+</h5><br>
+<span class="content"><%= micropost.content %></span><br>
+<span>
+  Tags: <%= raw micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+</span></br>
+<h5>
+  Author: <%= link_to micropost.user.name, micropost.user %>
 </h5>
-  <span class="content"><%= micropost.content %></span>
-  <h5>
-    Author: <%= link_to micropost.user.name, micropost.user %>
-  </h5>
-  <span class="timestamp">
-    Posted <%= micropost.created_at %>.
-  </span></br>
-  <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: micropost.content %>
-  <% end %>
-
+<span class="timestamp">
+  Posted <%= micropost.created_at %>.
+</span></br>
+<% if current_user?(micropost.user) %>
+  <%= link_to "delete", micropost, method: :delete,
+                                   data: { confirm: "You sure?" },
+                                   title: micropost.content %>
+<% end %><br>

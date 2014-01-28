@@ -1,14 +1,11 @@
 RailsTest::Application.routes.draw do
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
-<<<<<<< HEAD
   resources :microposts
-=======
-  resources :microposts 
->>>>>>> post
-
   
   root to: 'static_pages#home'
+
+  get 'tags/:tag', to: 'microposts#index', as: :tag
 
   match '/signup',     to: 'users#new'
   match '/signin',     to: 'sessions#new'

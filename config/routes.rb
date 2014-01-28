@@ -5,6 +5,8 @@ RailsTest::Application.routes.draw do
   
   root to: 'static_pages#home'
 
+  get 'tags/:tag', to: 'microposts#index', as: :tag
+
   match '/signup',     to: 'users#new'
   match '/signin',     to: 'sessions#new'
   match '/signout',    to: 'sessions#destroy', via: :delete
