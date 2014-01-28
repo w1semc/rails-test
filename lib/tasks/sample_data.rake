@@ -16,10 +16,17 @@ namespace :db do
                    password_confirmation: password)
     end
     users = User.all(limit: 6)
-    10.times do
+    3.times do
     zagolovok = Faker::Lorem.sentence(5)
     content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(zagolovok: zagolovok, content: content) }
+    users.each { |user| user.microposts.create!(zagolovok: zagolovok, 
+                                                content: content) }
     end
+  
+  microposts = Micropost.all
+  3.times do
+  content = Faker::Lorem.sentence(5)
+  microposts.each { |micropost| micropost.comments.create!(content: content) }
   end
+end
 end

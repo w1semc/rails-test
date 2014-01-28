@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
+    @comments = @micropost.comments.paginate(page: params[:page], :per_page => 10)
   end
 
    def new

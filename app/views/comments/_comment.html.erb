@@ -1,0 +1,12 @@
+<span class="content"><%= comment.content %></span>
+<% if comment.user_id.nil? %>
+  Author: Anonymous
+<% else %>
+  <span class="users" >
+    Author: <%= link_to current_user.name, current_user %>
+  </span> 
+<% end %><br>
+<span class="timestamp"> 
+  Posted <%= time_ago_in_words(comment.created_at) %> ago. 
+</span>
+

@@ -49,4 +49,18 @@ describe "Micropost pages" do
       end
     end
   end
+
+  describe "post page" do
+    let(:micropost) { FactoryGirl.create(:micropost) }
+    let!(:m1) { FactoryGirl.create(:comment, micropost: micropost, content: "Lorem ipsum") }
+    let!(:m2) { FactoryGirl.create(:comment, micropost: micropost, content: "Lorem ipsum") }
+
+    before { visit microposts_path(micropost) }
+
+    describe "comments" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(micropost.comments.count) }
+    end
+  end
 end

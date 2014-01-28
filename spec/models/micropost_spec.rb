@@ -24,6 +24,7 @@ describe Micropost do
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }
+  it { should respond_to(:comments) }
 
   it { should be_valid }
 
@@ -47,5 +48,19 @@ describe Micropost do
   describe "when title is too long" do
     before { @micropost.zagolovok = "a" * 141 }
     it { should_not be_valid }
+  end
+
+  describe "comment associations" do
+    before { @micropost.save }
+    let!(:older_comment) do
+      FactoryGirl.create(:comment, micropost: @micropost, created_at: 1.day.ago)
+    end
+    let!(:newer_comment) do
+      FactoryGirl.create(:comment, micropost: @micropost, created_at: 1.hour.ago)
+    end
+
+    it "should have the right comments in the right order" do
+      @micropost.comments.should == [newer_comment, older_comment]
+    end
   end
 end

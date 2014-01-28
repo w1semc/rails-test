@@ -4,11 +4,26 @@
 
 <span class="content"><%= @micropost.content %></span><br>
 
-Tags:<%= raw micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
+Tags:<%= raw @micropost.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %><br>
 
 <span class="users">
-             Author: <%= link_to @micropost.user.name, @micropost.user %>
+  Author: <%= link_to @micropost.user.name, @micropost.user %>
 </span><br>
 
 <span class="timestamp"> Posted <%= @micropost.created_at %> </span>
+
+<%= form_for([@micropost, @micropost.comments.build]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.label :Comment %>
+      <%= f.text_area :content, placeholder: "Compose new comment..." %>
+      <%= f.hidden_field :user_id, value: current_user.id if signed_in? %>
+      <%= f.submit "Post Comment", class: "btn btn-large btn-primary" %>
+<% end %>
+<% if @comments.any? %>
+  <ul>
+    <%= render @comments %>
+    <%= will_paginate @comments %>
+  </ul>
+<% end %>
 
